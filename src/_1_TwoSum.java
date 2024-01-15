@@ -33,7 +33,6 @@
 
 
 import java.util.Arrays;
-import java.util.HashMap;
 
 public class _1_TwoSum {
     public static void main(String[] args) {
@@ -43,13 +42,14 @@ public class _1_TwoSum {
     }
 
     private static int[] twoSum(int[] nums, int target) {
-        HashMap<Integer, Integer> map = new HashMap<>();
-
-        for (int i = 0; i < nums.length; i++) {
-            if (map.containsKey(target - nums[i])) {
-                return new int[] {map.get(target - nums[i]), i};
+        int index = 1;
+        while (index < nums.length) {
+            for (int i = 0; i + index < nums.length; i++) {
+                if (nums[i] + nums[index + i] == target) {
+                    return new int[] {i, index + i};
+                }
             }
-            map.put(nums[i], i);
+            index++;
         }
         return null;
     }
